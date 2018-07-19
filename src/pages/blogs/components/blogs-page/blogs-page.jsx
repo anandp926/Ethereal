@@ -3,7 +3,7 @@
  * __copyright__ = 'Copyright (C) 2018 Ethereal Machines Pvt. Ltd. All rights reserved'
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import LazyLoad from 'react-lazyload';
 import Spinner from '../../../../components/ui/spinner/spinner';
 
