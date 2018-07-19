@@ -15,7 +15,7 @@
   height: 20rem;
   background-size: cover;
   background-position: center;
-  filter: grayscale(100%);
+  filter: grayscale(50%);
   /* padding: 4rem; */
   /* justify-content: center; */
   /* border: .1rem solid var(--color-white); */

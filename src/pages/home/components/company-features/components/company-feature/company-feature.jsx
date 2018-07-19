@@ -9,7 +9,7 @@ import './company-feature.css';
 
 const companyFeature = (props) => {
   const styles = {
-    backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)), url(${props.url})`
+    backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${props.url})`
   };
 
   return (
