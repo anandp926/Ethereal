@@ -72,7 +72,7 @@ const etherealHalo = {
     {
       id: 2,
       title: 'Dimensions',
-      description: '900 x 900 x 1250 mm (dkh ke bataya jayega)'
+      description: '950 x 920 x 1100 mm'
     },
     {
       id: 3,
