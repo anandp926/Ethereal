@@ -18,7 +18,7 @@ class ErrorPage extends Component {
     return (
       <div className="page page--error-page">
         <section className="section section--404">
-          <div className="container">
+          <div className="container container--error-page">
             <div className="content">
               <h1 className="primary-heading u-text-center">
                 <span className="primary-heading--main">404</span>

@@ -3,12 +3,16 @@
  * __copyright__ = 'Copyright (C) 2018 Ethereal Machines Pvt. Ltd. All rights reserved'
  */
 
-.page--error-page h1{
+.page--error-page h1 {
   color: var(--color-black);
 }
 
 .section--404 {
   text-align: center;
+}
+
+.container--error-page {
+  position: static !important;
 }
 
 .section--404 .content {
