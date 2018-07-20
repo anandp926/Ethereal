@@ -78,6 +78,14 @@ class ContactUs extends Component {
           formSubmissionStart: false
         });
         // console.log(this.natureOfQuery);
+      } else {
+        const genericErrorMsg = { Error: ["Oops! Something went wrong, please try again."] };
+        this.setState({
+          ...this.state,
+          formValid: false,
+          errorMsg: genericErrorMsg,
+          formSubmissionStart: false
+        });
       }
     }
   }
@@ -186,7 +194,7 @@ class ContactUs extends Component {
           <section className="section section--contact-us-form">
             <div className="container">
               <SectionHeading name={"Get in Touch!"} classValue={"u-margin-bottom-big u-text-center"} hasSubHeading subHeading={"Please fill in your details to reach us and we will get back to you"}/>
-              <ContactUsForm onInputChange={this.onInputChange} onSubmitHandler={this.onSubmitHandler} formSubmissionStart={this.state.formSubmissionStart} errorMsg={this.state.errorMsg} natureOfQuery={this.natureOfQuery} isStateRequired={this.isStateRequired}/>
+              <ContactUsForm onInputChange={this.onInputChange} onSubmitHandler={this.onSubmitHandler} formSubmissionStart={this.state.formSubmissionStart} errorMsg={this.state.errorMsg} natureOfQuery={this.natureOfQuery} isStateRequired={this.isStateRequired} showLoader={this.state.formSubmissionStart}/>
             </div>
           </section>
         </div>

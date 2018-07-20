@@ -13,6 +13,8 @@ import InputEmail from '../../../../components/pages-component/form-controls/inp
 import Select from '../../../../components/pages-component/form-controls/select';
 import TextArea from '../../../../components/pages-component/form-controls/text-area';
 
+import Loader from '../../../../components/ui/loader/loader';
+
 import stateOptions from './state-options';
 // import countryCodeOptions from './country-code-options';
 
@@ -48,6 +50,7 @@ class ContactUsForm extends Component {
           <TextArea labelName={"Message"} inputName={"message"} placeholder={"Leave Your Message..."} isRequired {...this.props} />
         </div>
         { this.props.errorMsg ? <ErrorBox isRequired {...this.props} /> : null }
+        { this.props.showLoader ? <Loader>Submitting your request...</Loader> : null }
         <Button classValue={"form-btn"} disabled={this.props.formSubmissionStart}>Submit</Button>
       </Form>
     );
