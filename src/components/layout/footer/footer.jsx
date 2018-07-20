@@ -50,10 +50,10 @@ const footer = (props) => {
                 <NavLink to="/blogs">Blogs</NavLink>
               </li>
               <li className="link-item">
-                <NavLink to="/contact">Contact Us</NavLink>
+                <NavLink to="/careers">Careers</NavLink>
               </li>
               <li className="link-item">
-                <NavLink to="/careers">Careers</NavLink>
+                <NavLink to="/contact">Contact Us</NavLink>
               </li>
             </ul>
           </div>
