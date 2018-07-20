@@ -27,6 +27,6 @@
 }
 
 .company-feature-details p {
-  text-align: justify;
+  text-align: center;
   color: var(--color-text-link);
 }

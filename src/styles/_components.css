@@ -23,10 +23,18 @@
   color: var(--color-primary-blue);
 }
 
+.btn--blue a {
+  color: var(--color-primary-blue) !important;
+}
+
 .btn--blue:hover {
   background: var(--color-primary-blue);
   color: var(--color-white) !important;
   border: .1rem solid var(--color-primary-blue) !important;
+}
+
+.btn--blue:hover a {
+  color: var(--color-white) !important;
 }
 
 .btn--filled-blue {

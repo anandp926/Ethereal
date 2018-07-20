@@ -21,11 +21,11 @@ const blogItem = (props) => {
           <div className="blog-title subtitle">
             <span>{props.title}</span>
           </div>
-          <div className="blog-date flex-row">
+          {/* <div className="blog-date flex-row">
             <img src={calendarIcon} alt="Calender" width="16" height="16" className="icon"/>
             <span>Published On:</span>
             <span>{props.date}</span>
-          </div>
+          </div> */}
           <div className="blog-link">
             {/* <NavLink to={`${props.match.url}/${props.url}`} exact>Read More</NavLink> */}
             <p>Read More</p>

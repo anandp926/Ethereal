@@ -11,7 +11,7 @@ import '../products.css';
 import SectionHeading from '../../../components/pages-component/section-heading/section-heading';
 import PageBanner from '../../../components/ui/page-banner/page-banner';
 import ProductFeatures from '../components/product-features/product-features';
-import ProductTechSpecs from '../components/product-tech-specs/product-tech-specs';
+// import ProductTechSpecs from '../components/product-tech-specs/product-tech-specs';
 import ContactUs from '../components/contact-us/contact-us';
 
 import pentagram from '../assets/images/pentagram.png';
@@ -48,7 +48,7 @@ class EtherealPentagram extends Component {
           </div>
         </section>
         <ProductFeatures features={etherealPentagramData.features}/>
-        <ProductTechSpecs techSpecs={etherealPentagramData.techSpecs} product={'pentagram'}/>
+        {/* <ProductTechSpecs techSpecs={etherealPentagramData.techSpecs} product={'pentagram'}/> */}
         <LazyLoad height={200} offset={100} once>
           <ContactUs />
         </LazyLoad>

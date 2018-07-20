@@ -11,9 +11,9 @@ const aboutUs = (props) => {
   return (
     <div className="about-us-container">
       <div className="about-ethereal-machines">
-        <div className="about-title subtitle u-margin-bottom-small">
+        {/* <div className="about-title subtitle u-margin-bottom-small">
           <span>Ethereal Machines</span>
-        </div>
+        </div> */}
         <p>Ethereal Machines breathes by the mission of churning out entrepreneurs in the engineering world. Our machines are built to invigorate, nurture and embolden an engineer while unbridling the designer’s freedom to create. Ethereal Machines brings about a conjunction between additive and subtractive manufacturing techniques.</p>
         <p>The experience gained over the years by manufacturing CNC Routers has helped us command technical strength and expertise over the field. Technologies that have the potential to create large-scale impacts have always consumed us and shaped the direction of our work over the past few years. Our team of engineers strive everyday to refine the shape of the manufacturing industry, lesser the burden of capital costs of machineries and increase user friendliness of CNC machines.</p>
         <p>Based out of the startup hub of India, Bangalore, Ethereal Machines caters to clients across various fields and helps them establish successful businesses. Our clients range from some of the well renowned industries in India to the best maker-spaces as well.</p>
@@ -30,7 +30,7 @@ const aboutUs = (props) => {
           <div className="about-title subtitle u-margin-bottom-small">
             <span>Our Mission</span>
           </div>
-          <p>Our mission is to solve problems related to manufacturing faced by industries, engineers and makers through our CNC Routers and aid the growth of small-scale and mid-scale entrepreneurs by equipping them with affordable machines.</p>
+          <p>Our mission is to solve problems related to manufacturing faced by industries, engineers and makers through our machines and aid the growth of small-scale and mid-scale entrepreneurs by equipping them with affordable machines.</p>
         </div>
       </div>
     </div>
