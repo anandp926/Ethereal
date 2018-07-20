@@ -15,7 +15,7 @@ const navList = (props) => {
   const currentPath = window.location.pathname;
   return (
     <ul className="nav-list">
-      <NavItem linkType={'text'} navLink={true} address={'/home'} name={'Home'} {...props}/>
+      {/* <NavItem linkType={'text'} navLink={true} address={'/home'} name={'Home'} {...props}/> */}
       <NavItem linkType={'text'} navLink={false} address={'#product-sub-list'} name={'Products'} showActive={currentPath.includes('products')}>
         <SubList id={'product-sub-list'}>
           <SubListItem url={ray} width={70} height={70} hasImage link={'/products/ray'} {...props}>

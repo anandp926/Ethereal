@@ -37,9 +37,9 @@ const footer = (props) => {
           <div className="footer-col-divider" content="company-items">
             <div className="footer-title">Company</div>
             <ul className="links-list">
-              <li className="link-item">
+              {/* <li className="link-item">
                 <NavLink to="/home" exact>Home</NavLink>
-              </li>
+              </li> */}
               <li className="link-item">
                 <NavLink to="/about">About Us</NavLink>
               </li>

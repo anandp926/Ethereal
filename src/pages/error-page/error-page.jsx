@@ -24,7 +24,7 @@ class ErrorPage extends Component {
                 <span className="primary-heading--main">404</span>
                 <span className="primary-heading--sub">Oops, Sorry we can't find that page!</span>
               </h1>
-              <NavBtn url={'home'} classValue={'btn--blue'}>Go to Home</NavBtn>
+              <NavBtn url={''} classValue={'btn--blue'}>Go to Home</NavBtn>
             </div>
           </div>
         </section>
