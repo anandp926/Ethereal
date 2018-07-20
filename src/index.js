@@ -35,7 +35,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <App />
     </BrowserRouter>
   </Provider>,
