@@ -13,6 +13,7 @@ import InputEmail from '../../../../components/pages-component/form-controls/inp
 import InputFile from '../../../../components/pages-component/form-controls/input-file';
 import Select from '../../../../components/pages-component/form-controls/select';
 import TextArea from '../../../../components/pages-component/form-controls/text-area';
+import Loader from '../../../../components/ui/loader/loader';
 
 const careersGenericForm = (props) => {
   const possiblePositions = [
@@ -28,7 +29,7 @@ const careersGenericForm = (props) => {
     {id: 9, value: 'Others'},
   ];
 
-  const genderOptions = ["Female", "Male", "I don't want to disclose"];
+  // const genderOptions = ["Female", "Male", "I don't want to disclose"];
 
   return (
     <Form {...props} classValue={"form form--careers-generic-form"}>
@@ -42,7 +43,10 @@ const careersGenericForm = (props) => {
         <TextArea labelName={"Message"} inputName={"message"} placeholder={"Leave Your Message..."} isRequired {...props}/>
       </div>
       { props.errorMsg ? <ErrorBox isRequired {...props} /> : null}
-      <Button classValue={"form-btn"} disabled={props.formSubmissionStart}>Submit</Button>
+      { props.showLoader ? <Loader>Submitting your request...</Loader> : null }
+      <Button classValue={"form-btn"} disabled={props.formSubmissionStart}>
+        Submit
+      </Button>
     </Form>
   );
 };
