@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './nav-bar.css';
 
 import NavList from './components/nav-list/nav-list';
@@ -11,7 +10,7 @@ const navBar = (props) => {
   }
   return (
     <nav className={classes.join(' ')}>
-      <NavList {...props} />
+      <NavList {...props}/>
     </nav>
   );
 };
