@@ -1,0 +1,20 @@
+.create-blog-form {
+    padding-left: 30%;
+    padding-right: 30% ;
+}
+
+.create-blog-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+@media screen and (max-width: 767px){
+    .create-blog-form {
+        padding: 0;
+    }
+
+    .create-blog-btn {
+        flex-direction: column
+    }
+}
