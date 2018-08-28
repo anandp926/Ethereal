@@ -7,6 +7,7 @@
 
 // importing React and related dependencies
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 
 // Importing CSS for the App.jsx file
 import './app.css';
@@ -17,42 +18,17 @@ import Footer from './components/layout/footer/footer';
 import Routes from './routes/routes';
 
 class App extends Component {
-  state = {
-    openNavBar: false
-  };
-
-  /* This function will toggle the nav-bar (close/open) */
-  toggleNavBar = () => {
-    if (this.state.openNavBar) {
-      this.setState({
-        ...this.state,
-        openNavBar: false
-      });
-    } else {
-      this.setState({
-        ...this.state,
-        openNavBar: true
-      });
-    }
-  }
-
-  /* This function will be called whenever a nav-link will be clicked */
-  closeNavBar = () => {
-    // console.log('closeNavBar is called');
-    this.setState({
-      openNavBar: false,
-    });
-  }
-
+  
   render() {
     return (
       <div className="app">
-        <Header clicked={this.toggleNavBar} openNavBar={this.state.openNavBar} closeNavBar={this.closeNavBar} closeSubList={this.state.closeSubList}/>
+        <Header />
         <Routes />
         <Footer />
       </div>
     );
   }
 }
+
 
 export default App;

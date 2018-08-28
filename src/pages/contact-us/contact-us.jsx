@@ -16,8 +16,9 @@ import FormSuccessMsg from '../../components/pages-component/form-success-msg/fo
 import postGeneralQuery from '../../services/api/post-general-query';
 import postMediaQuery from '../../services/api/post-media-query';
 import postDistributorQuery from '../../services/api/post-distributor-query';
-
+import getQueryReport from '../../services/api/get-queries-report'
 import * as utilityFunctions from '../../utility-functions/utility-functions';
+import { connect } from 'react-redux';
 
 class ContactUs extends Component {
   constructor(props) {
@@ -183,6 +184,10 @@ class ContactUs extends Component {
     });
   }
 
+  queryReport = () => {
+    getQueryReport()
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -193,6 +198,16 @@ class ContactUs extends Component {
           <PageBanner heading={"Contact Us"} subHeading={"If you think that we can't wait to hear from you, you are right! Let's talk."} classValue={"page-banner--contact-us"} />
           <section className="section section--contact-us-form">
             <div className="container">
+            {
+                this.props.session.session
+                ?
+                    <div>
+                      <button className="form-btn" onClick={this.queryReport}>Query Report</button>
+                    </div>
+                    
+                :
+                    null
+              }
               <SectionHeading name={"Get in Touch!"} classValue={"u-margin-bottom-big u-text-center"} hasSubHeading subHeading={"Please fill in your details to reach us and we will get back to you"}/>
               <ContactUsForm onInputChange={this.onInputChange} onSubmitHandler={this.onSubmitHandler} formSubmissionStart={this.state.formSubmissionStart} errorMsg={this.state.errorMsg} natureOfQuery={this.natureOfQuery} isStateRequired={this.isStateRequired} showLoader={this.state.formSubmissionStart}/>
             </div>
@@ -203,4 +218,10 @@ class ContactUs extends Component {
   }
 }
 
-export default ContactUs;
+const mapStateToProps = (state) => {
+  return{
+    session: state.login
+  }
+}
+
+export default connect(mapStateToProps)(ContactUs);

@@ -1,0 +1,126 @@
+.career-item {
+    width: 30%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 2rem;
+    box-shadow: 0 6px 18px 0 rgba(0,0,0,.16), 0 0 10px 0 rgba(0,0,0,.12);
+    padding: 2rem;
+    transition: box-shadow .3s ease;
+    background: white;
+}
+
+.apply-career-item {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 2rem;
+    box-shadow: 0 6px 18px 0 rgba(0,0,0,.16), 0 0 10px 0 rgba(0,0,0,.12);
+    padding: 2rem;
+    transition: box-shadow .3s ease;
+    background: white;
+}
+
+.apply-career-item,
+.career-item:hover {
+    box-shadow: 0 9px 18px 0px rgba(0,0,0,.16), 0 0 10px 0 rgba(0,0,0,.12);
+}
+
+
+.career-details-container {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.apply-career-details-container {
+    justify-content: flex-start;
+    align-items:  flex-end;
+    padding: 4rem
+}
+
+.career-title {
+    font-size: var(--small-font-size);
+    font-family: var(--regular);
+    text-transform: none;
+    letter-spacing: 0.015rem;
+    text-decoration: underline;
+    /* border-bottom: .2rem solid black; */
+}
+
+.career-date-publisher,
+.career-description,
+.apply-career-description,
+.career-link {
+    padding-top: .8rem;
+    text-align: justify;
+}
+
+.career-date-publisher {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.career-date-publisher span {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.career-date,
+.career-publisher {
+    margin-right: 2rem;
+}
+
+.career-date span:not(:last-child) {
+    margin-right: .5rem;
+}
+
+.career-link a {
+    text-decoration: underline;
+    transition: all .3s ease;
+    color: var(--color-primary-blue);
+}
+
+.career-link a:hover {
+    color: var(--color-primary-blue-dark);
+}
+
+.display-list li{
+    display: inline-block;
+    padding-top: .8rem;
+    padding-right: 1.6rem;
+    padding-bottom: .8rem;
+}
+
+@media screen and (max-width: 600px) {
+    .apply-career-item,
+    .career-item {
+        flex-direction: column;
+        width: 30rem;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+    }
+
+    .career-details-container {
+        width: 100%;
+        margin: 0 auto 2rem;
+    }
+    .apply-career-details-container {
+        width: 100%;
+        margin: 0 auto 2rem;
+    }
+
+    .career-details-container {
+        padding: 0 2rem;
+    }
+
+    .career-description {
+        display: none;
+    }
+
+    .career-date-publisher {
+        font-family: var(--light);
+    }
+}

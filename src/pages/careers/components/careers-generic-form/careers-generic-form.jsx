@@ -10,7 +10,6 @@ import ErrorBox from '../../../../components/pages-component/form/components/err
 import Button from '../../../../components/pages-component/button/button';
 import InputText from '../../../../components/pages-component/form-controls/input-text';
 import InputEmail from '../../../../components/pages-component/form-controls/input-email';
-import InputFile from '../../../../components/pages-component/form-controls/input-file';
 import Select from '../../../../components/pages-component/form-controls/select';
 import TextArea from '../../../../components/pages-component/form-controls/text-area';
 import Loader from '../../../../components/ui/loader/loader';
@@ -39,7 +38,7 @@ const careersGenericForm = (props) => {
         <InputText labelName={"Contact Number"} inputName={"contact_number"} placeholder={"Contact No. with Country code (e.g. +91XXXXXXXXXX)"} isRequired {...props}/>
         {/* <Select labelName={"Gender"} inputName={"gender"} options={genderOptions} defaultValue={"I am.."} isRequired {...props}/> */}
         <Select labelName={"Position"} inputName={"position"} options={possiblePositions} defaultValue={"--select--"} isRequired {...props}/>
-        <InputFile labelName={"Resume"} inputName={"resume"} isRequired {...props}/>
+        <InputText labelName={"Resume"} inputName={"resume"} placeholder={"Enter Resume Link"} isRequired {...props}/>
         <TextArea labelName={"Message"} inputName={"message"} placeholder={"Leave Your Message..."} isRequired {...props}/>
       </div>
       { props.errorMsg ? <ErrorBox isRequired {...props} /> : null}

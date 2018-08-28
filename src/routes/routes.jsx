@@ -48,6 +48,10 @@ const Careers = Loadable({
   loader: () => import('../pages/careers/careers'),
   loading: Loading
 });
+const Apply = Loadable({
+  loader: () => import('../pages/careers/components/apply/apply.jsx'),
+  loading: Loading
+})
 const ContactUs = Loadable({
   loader: () => import('../pages/contact-us/contact-us'),
   loading: Loading
@@ -60,10 +64,15 @@ const Login = Loadable({
   loader: () => import('../pages/login/login'),
   loading: Loading
 });
+const Dashboard = Loadable({
+  loader: () => import('../pages/dashboard/dashboard'),
+  loading: Loading
+})
 const ErrorPage = Loadable({
   loader: () => import('../pages/error-page/error-page'),
   loading: Loading
 });
+
 
 class Routes extends Component {
   componentDidMount() {
@@ -76,13 +85,22 @@ class Routes extends Component {
         <Route path="/error-page" component={ErrorPage} />
         <Route path="/about" component={About} />
         <Route path="/media" component={Media} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={Login}/>
+        <Route path="/dashboard" render={() => (
+            !sessionStorage.jwt ? (
+              <Redirect to="login" />
+            ) : (
+              <Dashboard />
+            )
+          )}
+        />
         <Route path="/blogs" component={Blogs} />
         <Route path="/products/halo" component={Halo} />
         <Route path="/products/ray" component={Ray} />
         <Route path="/products/pentagram" component={Pentagram} />
         <Route path="/contact" component={ContactUs} />
-        <Route path="/careers" component={Careers} />
+        <Route path="/careers" exact component={Careers} />
+        <Route path="/careers/apply/:id" component={Apply} />
         <Route path="/home" exact component={Home} />
         <Route path="/" exact component={Home} />
         <Redirect to="/error-page" />
@@ -90,5 +108,6 @@ class Routes extends Component {
     );
   }
 }
+
 
 export default Routes;

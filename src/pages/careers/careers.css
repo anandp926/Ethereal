@@ -3,8 +3,14 @@
  * __copyright__ = 'Copyright (C) 2018 Ethereal Machines Pvt. Ltd. All rights reserved'
  */
 
-.current-openings p {
+.no-openings p {
   font-size: var(--small-font-size);
+}
+
+.current-openings {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .page--careers hr {

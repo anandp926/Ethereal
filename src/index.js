@@ -16,6 +16,7 @@ import thunk from 'redux-thunk';
 import media from './store/reducers/media-items';
 import jobs from './store/reducers/job-items';
 import team from './store/reducers/team-items';
+import login from './store/reducers/login'
 
 import App from './app.jsx';
 import './styles/index.css';
@@ -27,7 +28,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   media: media,
   jobs: jobs,
-  team: team
+  team: team,
+  login: login
 });
 
 // Creating store for the application

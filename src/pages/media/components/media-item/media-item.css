@@ -93,6 +93,13 @@
   color: var(--color-primary-blue-dark);
 }
 
+.display-list li{
+  display: inline-block;
+  padding-top: .8rem;
+  padding-right: 1.6rem;
+  padding-bottom: .8rem;
+}
+
 @media screen and (max-width: 600px) {
   .media-item {
     flex-direction: column;

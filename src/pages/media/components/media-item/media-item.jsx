@@ -36,9 +36,36 @@ const mediaItem = (props) => {
           </span> */}
         </div>
         <div className="media-description">{props.item.description}</div>
-        <div className="media-link">
-          <a href={props.item.link} target="_blank">View More</a>
-        </div>
+        {
+          props.session 
+          ?
+            <div className="media-link">
+              <ul className="display-list">
+                <li>
+                  <a href={props.item.link} target="_blank">View More</a>
+                </li>
+                <li>
+                  <a  onClick={() => props.onUpdate(props.item.id)}>Update</a>
+                </li>
+                <li>
+                    {
+                        props.item.publish
+                        ?
+                            <a onClick={() => props.unpublishMedia(props.item.id,false)} >UnPublish</a>
+                        :
+                            <a onClick={() => props.publishMedia(props.item.id,true)} >Publish</a>
+                    }
+                </li>
+                <li>
+                    <a onClick={() => props.deleteMedia(props.item.id)}>Delete</a>
+                </li>
+              </ul>
+            </div>
+          :
+            <div className="media-link">
+              <a href={props.item.link} target="_blank">View More</a>
+            </div>
+        }
       </div>
     </div>
   );

@@ -22,9 +22,13 @@ class ErrorPage extends Component {
             <div className="content">
               <h1 className="primary-heading u-text-center">
                 <span className="primary-heading--main">404</span>
-                <span className="primary-heading--sub">Oops, Sorry we can't find that page!</span>
+                <span className="primary-heading--sub">
+                  Oops, Sorry we can't find that {this.props.msg ? "job" : "page"}!
+                </span>
               </h1>
-              <NavBtn url={''} classValue={'btn--blue'}>Go to Home</NavBtn>
+              <NavBtn url={this.props.msg ? 'careers' : ''} classValue={'btn--blue'}>
+                Go to {this.props.msg ? "Carrer" : "Home"}
+              </NavBtn>
             </div>
           </div>
         </section>
