@@ -41,26 +41,32 @@ const navList = (props) => {
       <NavItem linkType={'text'} navLink={true} address={'/blogs'} name={'Blogs'} {...props}/>
       <NavItem linkType={'text'} navLink={true} address={'/careers'} name={'Careers'} {...props}/>
       <NavItem linkType={'text'} navLink={true} address={'/contact'} name={'Contact Us'} {...props}/>
-      {/* <NavItem
-        linkType={'img'}
-        img={{
-          url: 'https://avatars0.githubusercontent.com/u/13901302?s=400&u=e0b3a498eda561b52664c58db8ce33cef508abd4&v=4',
-          alt: 'User',
-          width: 40,
-          height: 40
-        }}
-        navLink={false}
-        address={'#user-sub-list'}
-      >
-        <SubList type={"left"} id={'user-sub-list'}>
-          <SubListItem link={'#halo'}>
-            <span className="subtitle">Dashboard</span>
-          </SubListItem>
-          <SubListItem link={'#ray'}>
-            <span className="subtitle">Log Out</span>
-          </SubListItem>
-        </SubList>
-      </NavItem> */}
+      {
+          props.session
+          ?
+              <NavItem
+                  linkType={'img'}
+                  img={{
+                      url: 'https://avatars0.githubusercontent.com/u/18368796?s=460&v=4',
+                      alt: 'User',
+                      width: 40,
+                      height: 40
+                    }}
+                  navLink={false}
+                  address={'#user-sub-list'}
+              >
+                  <SubList type={"left"} id={'user-sub-list'}>
+                      <SubListItem link={'/dashboard'}>
+                          <span className="subtitle">Dashboard</span>
+                      </SubListItem>
+                      <SubListItem link={'/'}>
+                          <span className="subtitle" onClick={props.logout}>Log Out</span>
+                      </SubListItem>
+                  </SubList>
+              </NavItem>
+          :
+              null
+      }
     </ul>
   );
 };
