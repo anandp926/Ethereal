@@ -22,7 +22,12 @@ import youtube from './assets/images/social-media-icons/youtube.svg';
 
 import Logo from '../logo/logo';
 const footer = (props) => {
-  return (
+  let pathName = window.location.pathname.slice(0,22)
+    console.log(pathName)
+    if(pathName === `/blogs/create/content/`){
+      return null
+    }else{
+      return (
     <footer className="footer">
       <div className="container container--footer">
         <div className="footer-box">
@@ -111,6 +116,8 @@ const footer = (props) => {
       </div>
     </footer>
   );
+    }
+  
 };
 
 export default footer;
