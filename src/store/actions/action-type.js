@@ -19,4 +19,5 @@ export const UPDATE_JOB = 'UPDATE_JOB';
 export const UNPUBLISHED_JOB = 'UNPUBLISHED_JOB';
 export const DELETE_JOB = 'DELETE_JOB';
 export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT'
+export const LOGOUT = 'LOGOUT';
+export const BLOG_CONTENT_OPEN = 'BLOG_CONTENT_OPEN'
