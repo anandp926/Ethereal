@@ -1,0 +1,28 @@
+.InputAddOn {
+    display: flex;
+}
+  
+  .InputAddOn-field {
+    flex: 1;
+    font-size: small;
+    padding: 0.3rem;
+    outline: none;
+    background-color: white;
+  }
+  .image-layout-btn {
+    display: block;
+    cursor: pointer;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    color: black;
+    padding: 0.3rem;
+    letter-spacing: .03rem;
+    transition: all .3s ease;
+  }
+
+  .image-layout-btn:hover {
+    cursor: pointer;
+    border: .1rem solid black;
+    background-color: white
+  }
