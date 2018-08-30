@@ -1,0 +1,107 @@
+.modalContent {
+    display: flex;
+    flex-direction: row;
+    height: 100%
+}
+
+.imageLayout {
+    width: 70%;
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    margin-right: 2%
+}
+
+.imageUpload {
+    width: 30%
+}
+
+.form-control {
+    width: 100%;
+  }
+  
+.form-control label {
+width: 100%;
+font-family: var(--medium);
+}
+  
+.form-control .star {
+padding: 0 .3rem;
+color: red;
+}
+  
+.form-control * {
+width: 100%;
+}
+  
+.form-control input {
+font-size: inherit;
+margin-top: 1rem; 
+padding: 0.1rem;
+outline: none;
+border: none;
+border-radius: 0.3rem;
+border: .1rem solid rgba(128, 128, 128, 0.3);
+background-color: white;
+}
+  
+.form-control input:focus {
+outline: .1rem solid blue;
+}
+
+.upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.upload-btn {
+display: block;
+cursor: pointer;
+font-size: medium;
+font-family: 'Courier New', Courier, monospace;
+text-transform: uppercase;
+color: black;
+padding: 0.3rem;
+letter-spacing: .03rem;
+transition: all .3s ease;
+margin:  2rem;
+
+}
+
+.upload-btn:hover {
+cursor: pointer;
+background-color: white
+}
+
+.modalStyle {
+    position: absolute;
+    top: 7%;
+    left: 7%;
+    right: 7%;
+    bottom: 7%;
+    padding: 2%;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .modalContent{
+        flex-direction: column
+    }
+    .imageLayout{
+        width: 100%;
+        height: 100%;
+    }
+
+    .imageUpload{
+        padding-top: 5%;
+        width: 100%
+
+    }
+}
