@@ -4,10 +4,12 @@
  */
 
 import React, { Component } from 'react';
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import loader from '../assets/images/loader/loader.gif';
+import Header from '../components/layout/header/header'
+import Footer from '../components/layout/footer/footer'
 
 const Loading = () => {
   return (
@@ -57,9 +59,21 @@ const ContactUs = Loadable({
   loading: Loading
 });
 const Blogs = Loadable({
-  loader: () => import('../pages/blogs/blogs'),
+  loader: () => import('../pages/blogs/blog'),
   loading: Loading
 });
+const BlogPage = Loadable({
+  loader: () => import('../pages/blogs/components/blog-item/blog-page/blog-page'),
+  loading: Loading
+})
+const BlogsCreate = Loadable({
+  loader: () => import('../pages/blogs/components/create-blog/create-blog'),
+  loading: Loading
+})
+const BlogsEditor = Loadable({
+  loader: () => import('../pages/blogs/components/create-blog/blog-content-editor/blog-editor'),
+  loading: Loading
+})
 const Login = Loadable({
   loader: () => import('../pages/login/login'),
   loading: Loading
@@ -71,6 +85,8 @@ const Dashboard = Loadable({
 const ErrorPage = Loadable({
   loader: () => import('../pages/error-page/error-page'),
   loading: Loading
+
+
 });
 
 
@@ -82,29 +98,44 @@ class Routes extends Component {
   render () {
     return (
       <Switch>
-        <Route path="/error-page" component={ErrorPage} />
-        <Route path="/about" component={About} />
-        <Route path="/media" component={Media} />
-        <Route path="/login" component={Login}/>
-        <Route path="/dashboard" render={() => (
-            !sessionStorage.jwt ? (
-              <Redirect to="login" />
-            ) : (
-              <Dashboard />
-            )
-          )}
-        />
-        <Route path="/blogs" component={Blogs} />
-        <Route path="/products/halo" component={Halo} />
-        <Route path="/products/ray" component={Ray} />
-        <Route path="/products/pentagram" component={Pentagram} />
-        <Route path="/contact" component={ContactUs} />
-        <Route path="/careers" exact component={Careers} />
-        <Route path="/careers/apply/:id" component={Apply} />
-        <Route path="/home" exact component={Home} />
-        <Route path="/" exact component={Home} />
-        <Redirect to="/error-page" />
-      </Switch>
+          <Route path="/error-page" Component={ErrorPage}/>
+          <Route path="/about" component={About} />
+          <Route path="/media" component={Media} />
+          <Route path="/login" component={Login}/>
+          <Route path="/dashboard" render={() => (
+              !sessionStorage.jwt ? (
+                <Redirect to="/" />
+              ) : (
+                <Dashboard />
+              )
+            )}
+          />
+          <Route path="/blogs" exact component={Blogs} />
+          <Route path="/blogs/blog/:id" exact component={BlogPage} />
+          <Route path="/blogs/create" exact render={() => (
+              !sessionStorage.jwt ? (
+                <Redirect to="/" />
+              ) : (
+                <BlogsCreate />
+              )
+            )} />
+          <Route path="/blogs/create/content/:id" render={() => (
+              !sessionStorage.jwt ? (
+                <Redirect to="/" />
+              ) : (
+                <BlogsEditor />
+              )
+            )} />
+          <Route path="/products/halo" component={Halo} />
+          <Route path="/products/ray" component={Ray} />
+          <Route path="/products/pentagram" component={Pentagram} />
+          <Route path="/contact" component={ContactUs} />
+          <Route path="/careers" exact component={Careers} />
+          <Route path="/careers/apply/:id" component={Apply} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/" exact component={Home} />
+          <Redirect to="/error-page" />
+        </Switch>
     );
   }
 }
