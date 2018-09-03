@@ -21,3 +21,7 @@ export const DELETE_JOB = 'DELETE_JOB';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const BLOG_CONTENT_OPEN = 'BLOG_CONTENT_OPEN'
+export const BLOG_ITEM = 'BLOG_ITEM'
+export const BLOG_ITEM_BY_ID = 'BLOG_ITEM_BY_ID'
+export const ADD_BLOG_ITEM = 'ADD_BLOG_ITEM'
+export const UPDATE_BLOG_ITEM = 'UPDATE_BLOG_ITEM'
