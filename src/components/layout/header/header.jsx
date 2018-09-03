@@ -46,7 +46,10 @@ class Header extends Component{
   }
 
   render(){
-    return(
+    if(this.props.blog === true){
+      return null
+    }else{
+      return(
       <header className="header">
         <div className="container flex-row header-container">
           <Hamburger 
@@ -65,12 +68,14 @@ class Header extends Component{
         </div>
       </header>
     )
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return{
-    session: state.login
+    session: state.login,
+    blog: state.blog.contentOpen
   }
 };
 
