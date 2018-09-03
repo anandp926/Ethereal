@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
+
+import * as actionType from '../../../../../store/actions/action-type'
 
 import Editor, { Editable, createEmptyState } from 'ory-editor-core'
 import 'ory-editor-core/lib/index.css' 
@@ -26,6 +30,9 @@ import native from 'ory-editor-plugins-default-native'
 import divider from 'ory-editor-plugins-divider'
 
 import FloatingButton from './floating-button/floating-button'
+import updateBolg from '../../../../../services/api/update-blog'
+import getBlogItemsByID from '../../../../../services/api/get-blog-item-byid'
+import ErrorPage from '../../../../error-page/error-page'
 
 // Creates an empty editable
 const content = createEmptyState()
@@ -49,12 +56,92 @@ editor.trigger.mode.edit()
 
 class BlogEditor extends Component{
 
+    state = {
+        description: "",
+        errorMsg: null
+    }
+
+    componentWillMount(){
+        this.props.contentEditorOpen(true)
+    }
+
+    callback = (data) => {
+        if(data.status === 200){
+            this.props.contentEditorOpen(true)
+            this.props.fetchBlogItemsById(data.data)
+            this.setState({
+                errorMsg: ''
+            })
+        }else {
+            this.props.contentEditorOpen(false)
+            this.setState({
+                errorMsg: data['status']
+            })
+        }
+    }
+    
+    componentDidMount() {
+        const id = this.props.match.params.id
+        if(id){
+            getBlogItemsByID(this.callback,id)
+        }
+        
+
+        this.unblock = this.props.history.block(targetLocation => {
+        
+        var cnfrm= window.confirm("You will loss your data");
+        if (cnfrm == true) {
+            this.props.contentEditorOpen(false) 
+            return this.props.history.goBack('/blogs')
+        } else {
+            return false
+        }
+        });
+     }
+     componentWillUnmount() {
+        this.unblock();
+     }
+
+
+     blogcallback = (data) => {
+        const contentData = {
+            content: JSON.stringify(this.state.description)
+         }
+        if(data.status === 200){
+            this.props.updateBlogItems(contentData)
+            this.setState({
+                description:''
+            })
+        }else if (data.response) {
+            alert(data.response.data)
+          } else {
+            const genericErrorMsg = { Error: ["Oops! Something went wrong, please try again."] };
+            alert(genericErrorMsg)
+          }
+     }
+
+     updateContent = () => {
+         const data = {
+            content: JSON.stringify(this.state.description)
+         }
+         const id = this.props.match.params.id
+         if(id){
+             updateBolg(this.blogcallback,id ,data)
+         }
+         
+     }
+
     render(){
-        return(
-            <div style={{marginTop:60, padding:40}}>
-                <FloatingButton/>
+        if(this.state.errorMsg !== null && this.state.errorMsg === 'Not Found'){
+            return(
+                <ErrorPage/>
+            )
+        }else{
+            return(
+            <div>
+                <FloatingButton onUpdate={this.updateContent}/>
                 {/* Content area */}
-                <Editable editor={editor} id={content.id} onChange={state => (this.editorState = state)}/>
+                <Editable editor={editor} id={content.id} onChange={state => {this.setState({description: state})}}/>
 
                 {/*  Default user interface  */}
                 <Trash editor={editor}/>
@@ -62,7 +149,33 @@ class BlogEditor extends Component{
                 <Toolbar editor={editor}/>
             </div>
         )
+        }
     }
 }
 
-export default BlogEditor
+
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        contentEditorOpen: (data) => {
+            dispatch({
+                type: actionType.BLOG_CONTENT_OPEN,
+                value: data
+            })
+        },
+        updateBlogItems: (data) => {
+            dispatch({
+                type: actionType.UPDATE_BLOG_ITEM,
+                value: data
+            })
+        },
+        fetchBlogItemsById: (data) => {
+            dispatch({
+                type: actionType.BLOG_ITEM_BY_ID,
+                value: data
+            })
+        }
+    }
+}
+
+export default withRouter(connect(null,mapDispatchToProps)(BlogEditor))
