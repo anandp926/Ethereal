@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 import Form from '../../../../components/pages-component/form/form'
 import FormControl from '../../../../components/pages-component/form-controls/components/form-control';
@@ -9,6 +10,7 @@ import uuid from 'uuid/';
 import createBlog from '../../../../services/api/create-blog'
 import ErrorBox from '../../../../components/pages-component/form/components/error-box';
 import Loader from '../../../../components/ui/loader/loader';
+import * as actionType from '../../../../store/actions/action-type'
 
 class CreateBlog extends Component{
 
@@ -37,7 +39,9 @@ class CreateBlog extends Component{
     }
 
     submitCallback = (data) => {
+        const blogData = this.createBlogData();
         if(data.status === 201){
+            this.props.addBlogItems(blogData)
             this.setState({
                 editContent: true,
                 readOnly:true,
@@ -194,4 +198,15 @@ class CreateBlog extends Component{
     }
 }
 
-export default CreateBlog
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addBlogItems: (data) => {
+            dispatch({
+                type: actionType.ADD_BLOG_ITEM,
+                value: data
+            })
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateBlog)
