@@ -30,7 +30,7 @@ const styles = theme => ({
     backgroundColor: blue[500],
   },
   list: {
-    top: theme.spacing.unit * 7,
+    top: 0,
     right: theme.spacing.unit * 1,
     position:'fixed',
     zIndex: 1
@@ -93,7 +93,7 @@ class FloatingActionButtonZoom extends React.Component {
             <List className={classes.list}>
                 <ListItem>
                     <Tooltip title="Save" placement="left" className={classes.tooltips} >
-                        <Button variant="fab" className={classes.fabGreen} color= 'inherit' onClick={() => this.props.showData()}>
+                        <Button variant="fab" className={classes.fabGreen} color= 'inherit' onClick={() => this.props.onUpdate()}>
                             <Save />
                         </Button>
                     </Tooltip>
