@@ -7,7 +7,6 @@
 
 // importing React and related dependencies
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 
 // Importing CSS for the App.jsx file
 import './app.css';
@@ -21,10 +20,10 @@ class App extends Component {
   
   render() {
     return (
-      <div className="app">
-        <Header />
-        <Routes />
-        <Footer />
+      <div className="App">
+        <Header/>
+        <Routes/>
+        <Footer/>
       </div>
     );
   }
