@@ -17,6 +17,7 @@ import media from './store/reducers/media-items';
 import jobs from './store/reducers/job-items';
 import team from './store/reducers/team-items';
 import login from './store/reducers/login'
+import blog from './store/reducers/blog-items'
 
 import App from './app.jsx';
 import './styles/index.css';
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
   media: media,
   jobs: jobs,
   team: team,
-  login: login
+  login: login,
+  blog: blog
 });
 
 // Creating store for the application
