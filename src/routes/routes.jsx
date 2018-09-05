@@ -8,8 +8,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import loader from '../assets/images/loader/loader.gif';
-import Header from '../components/layout/header/header'
-import Footer from '../components/layout/footer/footer'
 
 const Loading = () => {
   return (
