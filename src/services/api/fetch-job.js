@@ -2,7 +2,7 @@ import  axios  from '../axios/axios';
 import headers from '../axios/headers';
 
 const getJob = (callback,id) => {
-    axios.get(`/careers/jobs/${id}`, { headers })
+    axios.get(`/careers/jobs/${id}`, {...headers, crossdomain: true })
             .then((res) => {
                 callback(res)
             })
