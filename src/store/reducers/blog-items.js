@@ -1,5 +1,5 @@
 /*
- * __author__ = 'Kanishka Mohan Madhuni <kmmadhuni@gmail.com>'
+ * __author__ = 'Anand Singh<anand.ethereal@gmail.com>'
  * __copyright__ = 'Copyright (C) 2018 Ethereal Machines Pvt. Ltd. All rights reserved'
  */
 
@@ -48,6 +48,23 @@ const reducer = (state = initialState, action) => {
       ...state,
       contentOpen: action.value
     }
+    case actionType.UNPUBLISHED_BLOG:{
+      return Object.assign({}, state, {
+        blogItems : state.blogItems.map(BLOG => {
+              if (BLOG.id !== action.value.id) {
+          return BLOG;
+      }
+      return Object.assign({}, BLOG, {
+          publish : action.value.publish
+      })
+  })
+  });
+  }
+  case actionType.DELETE_BLOG:
+      return {
+          ...state,
+          blogItems: [...state.blogItems.filter(BLOG => BLOG.id !== action.value)]
+      }
     default:
       return state
   }
