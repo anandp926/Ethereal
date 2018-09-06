@@ -57,18 +57,21 @@
   .blog-date *:not(:last-child) {
     margin-right: .5rem;
   }
+  .display-list li{
+    display: inline-block;
+    padding-top: .8rem;
+    padding-right: 1.6rem;
+    padding-bottom: .8rem;
+}
   
   .blog-link {
     padding-top: .8rem;
-  }
-  
-  .blog-link p {
-    text-decoration: underline;
+    text-decoration: underline !important;
     transition: all .3s ease;
     color: var(--color-primary-blue);
   }
   
-  .blog-link p:hover {
+  .blog-link:hover {
     color: var(--color-primary-blue-dark);
   }
   
