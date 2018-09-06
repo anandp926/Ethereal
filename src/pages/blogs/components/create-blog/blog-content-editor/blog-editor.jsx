@@ -33,28 +33,29 @@ import FloatingButton from './floating-button/floating-button'
 import updateBolg from '../../../../../services/api/update-blog'
 import getBlogItemsByID from '../../../../../services/api/get-blog-item-byid'
 import ErrorPage from '../../../../error-page/error-page'
+import {Redirect} from 'react-router-dom'
 
 // Creates an empty editable
-const content = createEmptyState()
+const content = createEmptyState();
 
 const plugins = {
-  content: [slate(), spacer, image, video, divider], // Define plugins for content cells. To import multiple plugins, use [slate(), image, spacer, divider]
-  // If you pass the native key the editor will be able to handle native drag and drop events (such as links, text, etc).
-  // The native plugin will then be responsible to properly display the data which was dropped onto the editor.
-  layout: [parallax({ defaultPlugin: slate() })], // Define plugins for layout cells
-  native,
-}
+    content: [slate(), spacer, image, video, divider], // Define plugins for content cells. To import multiple plugins, use [slate(), image, spacer, divider]
+    // If you pass the native key the editor will be able to handle native drag and drop events (such as links, text, etc).
+    // The native plugin will then be responsible to properly display the data which was dropped onto the editor.
+    layout: [parallax({ defaultPlugin: slate() })], // Define plugins for layout cells
+    native,
+  } ;
 
 const editor = new Editor({
-  defaultPlugin: slate(),
-  plugins: plugins,
-  editables: [content],
-});
-
+    defaultPlugin: slate(),
+    plugins: plugins,
+    editables: [content],
+  });
 
 editor.trigger.mode.edit()
 
 class BlogEditor extends Component{
+
 
     state = {
         description: "",
@@ -69,9 +70,11 @@ class BlogEditor extends Component{
         if(data.status === 200){
             this.props.contentEditorOpen(true)
             this.props.fetchBlogItemsById(data.data)
+            
             this.setState({
                 errorMsg: ''
             })
+            
         }else {
             this.props.contentEditorOpen(false)
             this.setState({
@@ -79,8 +82,9 @@ class BlogEditor extends Component{
             })
         }
     }
-    
+  
     componentDidMount() {
+
         const id = this.props.match.params.id
         if(id){
             getBlogItemsByID(this.callback,id)
@@ -109,11 +113,9 @@ class BlogEditor extends Component{
          }
         if(data.status === 200){
             this.props.updateBlogItems(contentData)
-            this.setState({
-                description:''
-            })
+            return this.props.history.goBack('/blogs/blog/this.props.match.params.id')
         }else if (data.response) {
-            alert(data.response.data)
+            alert(data.response.data.content)
           } else {
             const genericErrorMsg = { Error: ["Oops! Something went wrong, please try again."] };
             alert(genericErrorMsg)
@@ -132,6 +134,7 @@ class BlogEditor extends Component{
      }
 
     render(){
+        
         if(this.state.errorMsg !== null && this.state.errorMsg === 'Not Found'){
             return(
                 <ErrorPage/>
@@ -152,8 +155,6 @@ class BlogEditor extends Component{
         }
     }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
     return{
