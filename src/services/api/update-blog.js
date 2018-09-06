@@ -12,11 +12,10 @@ const updateblog = (callback,id,data) => {
             'Content-Type': 'application/json'
         }
 }).then(res => {
-    console.log(res)
+    // console.log(res)
         callback(res)
     })
 .catch(err => {
-    console.log(err)
     callback(err)
 })
 };
