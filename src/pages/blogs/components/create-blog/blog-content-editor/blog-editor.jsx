@@ -33,7 +33,6 @@ import FloatingButton from './floating-button/floating-button'
 import updateBolg from '../../../../../services/api/update-blog'
 import getBlogItemsByID from '../../../../../services/api/get-blog-item-byid'
 import ErrorPage from '../../../../error-page/error-page'
-import {Redirect} from 'react-router-dom'
 
 // Creates an empty editable
 const content = createEmptyState();
