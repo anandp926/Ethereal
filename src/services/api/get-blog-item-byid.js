@@ -2,7 +2,7 @@ import  axios  from '../axios/axios';
 import headers from '../axios/headers';
 
 const getBlogById = (callback,id) => {
-    axios.get(`/blogs/${id}`, { headers })
+    axios.get(`/blogs/${id}`, {...headers, crossdomain: true })
             .then((res) => {
                 callback(res)
             })
