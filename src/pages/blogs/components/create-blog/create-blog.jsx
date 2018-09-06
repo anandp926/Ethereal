@@ -27,6 +27,7 @@ class CreateBlog extends Component{
         btnDisable: false,
     }
 
+
     handleInputChange(e) {
         this.setState({[e.target.name]: e.target.value})
         const target = e.target;
@@ -198,6 +199,7 @@ class CreateBlog extends Component{
     }
 }
 
+
 const mapDispatchToProps = (dispatch) => {
     return{
         addBlogItems: (data) => {
@@ -205,7 +207,8 @@ const mapDispatchToProps = (dispatch) => {
                 type: actionType.ADD_BLOG_ITEM,
                 value: data
             })
-        }
+        },
+        
     }
 }
 
