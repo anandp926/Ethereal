@@ -9,11 +9,6 @@ import * as actionType from '../../../../../store/actions/action-type'
 import getBlogById from '../../../../../services/api/get-blog-item-byid';
 
 import { HTMLRenderer } from 'ory-editor-renderer'
-import Editor, { Editable, createEmptyState } from 'ory-editor-core'
-import 'ory-editor-core/lib/index.css'
-
-import { Trash, DisplayModeToggle, Toolbar } from 'ory-editor-ui'
-import 'ory-editor-ui/lib/index.css'
 
 import slate from 'ory-editor-plugins-slate'
 import 'ory-editor-plugins-slate/lib/index.css'
@@ -34,7 +29,6 @@ import native from 'ory-editor-plugins-default-native'
 
 import divider from 'ory-editor-plugins-divider'
 
-const content = createEmptyState()
 
 const plugins = {
   content: [slate(), spacer, image, video, divider,], 
@@ -89,6 +83,7 @@ class BlogPage extends Component {
         let content
         if(this.props.blog.content){
            content  = JSON.parse(this.props.blog.content)
+           //console.log(this.props.blog.content)
         }
         
         return (
