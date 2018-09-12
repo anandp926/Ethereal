@@ -1,157 +1,167 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
-
 import * as actionType from '../../../../../store/actions/action-type'
-
-import Editor, { Editable, createEmptyState } from 'ory-editor-core'
-import 'ory-editor-core/lib/index.css' 
-
-import { Trash, DisplayModeToggle, Toolbar } from 'ory-editor-ui'
-import 'ory-editor-ui/lib/index.css'
-
-import slate from 'ory-editor-plugins-slate'
-import 'ory-editor-plugins-slate/lib/index.css'
-
-import spacer from 'ory-editor-plugins-spacer'
-import 'ory-editor-plugins-spacer/lib/index.css'
-
-import image from 'ory-editor-plugins-image'
-import 'ory-editor-plugins-image/lib/index.css'
-
-import video from 'ory-editor-plugins-video'
-import 'ory-editor-plugins-video/lib/index.css'
-
-import parallax from 'ory-editor-plugins-parallax-background'
-import 'ory-editor-plugins-parallax-background/lib/index.css'
-
-import native from 'ory-editor-plugins-default-native'
-
-import divider from 'ory-editor-plugins-divider'
-
 import FloatingButton from './floating-button/floating-button'
 import updateBolg from '../../../../../services/api/update-blog'
 import getBlogItemsByID from '../../../../../services/api/get-blog-item-byid'
-import ErrorPage from '../../../../error-page/error-page'
 
-// Creates an empty editable
-const content = createEmptyState();
+// The editor core
+import Editor, { Editable, createEmptyState } from 'ory-editor-core'
+import 'ory-editor-core/lib/index.css' // we also want to load the stylesheets
 
-const plugins = {
-    content: [slate(), spacer, image, video, divider], // Define plugins for content cells. To import multiple plugins, use [slate(), image, spacer, divider]
-    // If you pass the native key the editor will be able to handle native drag and drop events (such as links, text, etc).
-    // The native plugin will then be responsible to properly display the data which was dropped onto the editor.
-    layout: [parallax({ defaultPlugin: slate() })], // Define plugins for layout cells
-    native,
-  } ;
+// Require our ui components (optional). You can implement and use your own ui too!
+import { Trash, DisplayModeToggle, Toolbar } from 'ory-editor-ui'
+import 'ory-editor-ui/lib/index.css'
 
-const editor = new Editor({
-    defaultPlugin: slate(),
-    plugins: plugins,
-    editables: [content],
-  });
+// Load some exemplary plugins:
+import slate from 'ory-editor-plugins-slate' // The rich text area plugin
+import 'ory-editor-plugins-slate/lib/index.css' // Stylesheets for the rich text area plugin
 
-editor.trigger.mode.edit()
+// The spacer plugin
+import spacer from 'ory-editor-plugins-spacer'
+import 'ory-editor-plugins-spacer/lib/index.css'
 
-class BlogEditor extends Component{
+// The image plugin
+import  imagePlugin  from 'ory-editor-plugins-image'
+import 'ory-editor-plugins-image/lib/index.css'
+
+// The video plugin
+import video from 'ory-editor-plugins-video'
+import 'ory-editor-plugins-video/lib/index.css'
+
+// The parallax plugin
+import parallax from 'ory-editor-plugins-parallax-background'
+import 'ory-editor-plugins-parallax-background/lib/index.css'
 
 
-    state = {
-        description: "",
-        errorMsg: null
-    }
+// The native handler plugin
+import native from 'ory-editor-plugins-default-native'
 
-    componentWillMount(){
-        this.props.contentEditorOpen(true)
-    }
+// The divider plugin
+import divider from 'ory-editor-plugins-divider'
 
-    callback = (data) => {
-        if(data.status === 200){
-            this.props.contentEditorOpen(true)
-            this.props.fetchBlogItemsById(data.data)
-            
-            this.setState({
-                errorMsg: ''
-            })
-            
-        }else {
-            this.props.contentEditorOpen(false)
-            this.setState({
-                errorMsg: data['status']
-            })
-        }
-    }
+// Renders json state to html, can be used on server and client side
+require('react-tap-event-plugin')() // react-tap-event-plugin is required by material-ui which is used by ory-editor-ui so we need to call it here
+
+// Define which plugins we want to use. We only have slate and parallax available, so load those.
+
+
+class BlogEditor extends Component {
+
   
-    componentDidMount() {
+  componentWillMount(){
+    this.props.contentEditorOpen(true)
+  }
 
-        const id = this.props.match.params.id
-        if(id){
-            getBlogItemsByID(this.callback,id)
+
+  callback = (data) => {
+    if(data.data.id !== this.props.match.params.id){
+        alert("This Blog is not found")
+        this.props.contentEditorOpen(true)
+        return window.location.href='/'
+    }else if(data.status === 200){
+        if(data.data.content && !this.props.blog.length>0 ){
+            alert('Please go to blog page to update content')
+            return window.location.href='/'
+        }else if(data.data.content && this.props.blog.length>0 && !this.props.blog[0].content){
+            alert('Please go to blog page to update content')
+            return window.location.href='/'
         }
-        
+    }else {
+        alert(data)
+    }
+}
 
-        this.unblock = this.props.history.block(targetLocation => {
-        
+componentDidMount() {
+
+    const id = this.props.match.params.id
+    if(id){
+        getBlogItemsByID(this.callback,id)
+        }
+    this.unblock = this.props.history.block(targetLocation => {
+    
         var cnfrm= window.confirm("You will loss your data");
         if (cnfrm == true) {
             this.props.contentEditorOpen(false) 
-            return this.props.history.goBack('/blogs')
+            return window.location.href='/blogs'
         } else {
             return false
         }
         });
-     }
-     componentWillUnmount() {
+    }
+    componentWillUnmount() {
         this.unblock();
+    }
+
+  blogcallback = (data) => {
+    
+    if(data.status === 200){
+        alert("Succesfull saved")
+        return window.location.href='/'
+    }else if (data.response) {
+        alert(data)
+      } else {
+        const genericErrorMsg = { Error: ["Oops! Something went wrong, please try again."] };
+        alert(genericErrorMsg)
+      }
+ }
+
+ updateContent = () => {
+     const data = {
+        content: JSON.stringify(this.editorState)
      }
-
-
-     blogcallback = (data) => {
-        const contentData = {
-            content: JSON.stringify(this.state.description)
-         }
-        if(data.status === 200){
-            this.props.updateBlogItems(contentData)
-            return this.props.history.goBack('/blogs/blog/this.props.match.params.id')
-        }else if (data.response) {
-            alert(data.response.data.content)
-          } else {
-            const genericErrorMsg = { Error: ["Oops! Something went wrong, please try again."] };
-            alert(genericErrorMsg)
-          }
+     const id = this.props.match.params.id
+     if(id){
+         updateBolg(this.blogcallback,id ,data)
      }
+     
+ }
 
-     updateContent = () => {
-         const data = {
-            content: JSON.stringify(this.state.description)
-         }
-         const id = this.props.match.params.id
-         if(id){
-             updateBolg(this.blogcallback,id ,data)
-         }
-         
-     }
+  render() {
 
-    render(){
-        
-        if(this.state.errorMsg !== null && this.state.errorMsg === 'Not Found'){
-            return(
-                <ErrorPage/>
-            )
+    // Creates an empty editable
+    let content = createEmptyState();
+
+    //console.log(this.props.blog)
+    
+    if(this.props.blog.length>0){
+        if(this.props.blog[0].content){
+            content = JSON.parse(this.props.blog[0].content)
         }else{
-            return(
-            <div>
-                <FloatingButton onUpdate={this.updateContent}/>
-                {/* Content area */}
-                <Editable editor={editor} id={content.id} onChange={state => {this.setState({description: state})}}/>
-
-                {/*  Default user interface  */}
-                <Trash editor={editor}/>
-                <DisplayModeToggle editor={editor}/>
-                <Toolbar editor={editor}/>
-            </div>
-        )
+            content = createEmptyState()
         }
+    }
+
+    const plugins = {
+      content: [slate(),spacer,imagePlugin,video,divider], // Define plugins for content cells. To import multiple plugins, use [slate(), image, spacer, divider]
+      layout: [parallax({ defaultPlugin: slate() })], // Define plugins for layout cells
+      native
+    }
+    
+    // Instantiate the editor
+    const editor = new Editor({
+        defaultPlugin: slate(),
+        plugins: plugins,
+        editables: [content],
+    })
+    return (
+      <div>
+        <FloatingButton onUpdate={this.updateContent}/>
+        {/* Content area */}
+        <Editable editor={editor} id={content.id} onChange={state => (this.editorState = state)}/>
+
+        {/*  Default user interface  */}
+        <Trash editor={editor}/>
+        <DisplayModeToggle editor={editor}/>
+        <Toolbar editor={editor}/>
+      </div>
+    );
+  }
+}
+const mapStateToProps = (state) => {
+    return{
+        blog: state.blog.blogItems
     }
 }
 
@@ -163,19 +173,7 @@ const mapDispatchToProps = (dispatch) => {
                 value: data
             })
         },
-        updateBlogItems: (data) => {
-            dispatch({
-                type: actionType.UPDATE_BLOG_ITEM,
-                value: data
-            })
-        },
-        fetchBlogItemsById: (data) => {
-            dispatch({
-                type: actionType.BLOG_ITEM_BY_ID,
-                value: data
-            })
-        }
     }
 }
 
-export default withRouter(connect(null,mapDispatchToProps)(BlogEditor))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(BlogEditor))
