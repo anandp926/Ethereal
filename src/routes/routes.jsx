@@ -61,7 +61,7 @@ const Blogs = Loadable({
   loading: Loading
 });
 const BlogPage = Loadable({
-  loader: () => import('../pages/blogs/components/blog-item/blog-page/blog-page'),
+  loader: () => import('../pages/blogs/components/blog-page/blog-page'),
   loading: Loading
 })
 const BlogsCreate = Loadable({
@@ -69,7 +69,7 @@ const BlogsCreate = Loadable({
   loading: Loading
 })
 const BlogsEditor = Loadable({
-  loader: () => import('../pages/blogs/components/create-blog/blog-content-editor/blog-editor'),
+  loader: () => import('../pages/blogs/components/create-blog/blog-content-editor/blogs-editor'),
   loading: Loading
 })
 const Login = Loadable({
@@ -83,8 +83,6 @@ const Dashboard = Loadable({
 const ErrorPage = Loadable({
   loader: () => import('../pages/error-page/error-page'),
   loading: Loading
-
-
 });
 
 
@@ -96,7 +94,7 @@ class Routes extends Component {
   render () {
     return (
       <Switch>
-          <Route path="/error-page" Component={ErrorPage}/>
+          <Route path="/error-page" component={ErrorPage}/>
           <Route path="/about" component={About} />
           <Route path="/media" component={Media} />
           <Route path="/login" component={Login}/>
