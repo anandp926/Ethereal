@@ -114,23 +114,6 @@ class CreateBlog extends Component{
                         <div className="create-blog-form">
                             <Form classValue="form" onSubmitHandler={this.onSubmitHandle}>
                                 <FormControl>
-                                    <label htmlFor="author">
-                                        Author
-                                        <span className="star"> *</span>
-                                    </label>
-                                    <input 
-                                        type="text" 
-                                        className="input-element" 
-                                        placeholder="Enter Author Name"
-                                        name="author"
-                                        id="author"
-                                        required={true}
-                                        readOnly={this.state.readOnly}
-                                        value={this.state.author}
-                                        onChange={ e => this.handleInputChange(e)}
-                                    />
-                                </FormControl>
-                                <FormControl>
                                     <label htmlFor="title">
                                         Title
                                         <span className="star"> *</span>
@@ -144,6 +127,23 @@ class CreateBlog extends Component{
                                         required={true}
                                         readOnly={this.state.readOnly}
                                         value={this.state.title}
+                                        onChange={ e => this.handleInputChange(e)}
+                                    />
+                                </FormControl>
+                                <FormControl>
+                                    <label htmlFor="author">
+                                        Author
+                                        <span className="star"> *</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        className="input-element" 
+                                        placeholder="Enter Author Name"
+                                        name="author"
+                                        id="author"
+                                        required={true}
+                                        readOnly={this.state.readOnly}
+                                        value={this.state.author}
                                         onChange={ e => this.handleInputChange(e)}
                                     />
                                 </FormControl>
