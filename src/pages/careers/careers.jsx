@@ -37,7 +37,7 @@ class Careers extends Component {
   }
 
   state = {
-    formValid: true,
+    formValid: false,
     errorMsg: null,
     formSubmissionStart: false,
     showModal: false,
@@ -191,7 +191,8 @@ class Careers extends Component {
       careerId: '',
       attention: false,
       msg:false,
-      msgContent:''
+      msgContent:'',
+      formValid:false
     });
   };
 
@@ -206,7 +207,7 @@ class Careers extends Component {
     }else{
       this.setState({
         msg:true,
-        msgContent: 'Something Went Wrong',
+        msgContent: "Something went wrong",
         showModal: true,
         attention:true
       })
@@ -238,6 +239,7 @@ class Careers extends Component {
         attention: false
       })
     }else{
+      console.log(data)
       this.setState({
         msg:true,
         msgContent: 'Something Went Wrong',
@@ -271,9 +273,15 @@ class Careers extends Component {
               <CreateCareer closeModal={this.closeModal} careerId={this.state.careerId} updateCareer={this.state.updateCareer}/>
             </Modal>
           :
-            <Modal show={this.state.showModal} clicked={this.closeModal}>
+            null
+        }
+        {
+          this.state.formValid
+          ?
+          <Modal show={this.state.showModal} clicked={this.closeModal}>
               <FormSuccessMsg />
-            </Modal>
+          </Modal>
+          : null
         }
         {
           this.state.msg
