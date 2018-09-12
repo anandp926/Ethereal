@@ -40,11 +40,10 @@ class Header extends Component{
 
   logOut = () => {
     this.props.logout()
-    this.setState({
-      openNavBar: false,
-    });
+    // this.setState({
+    //   openNavBar: false,
+    // });
   }
-
   render(){
     if(this.props.blog === true){
       return null
@@ -90,4 +89,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Header);
+export default connect(mapStateToProps,mapDispatchToProps, null, {pure:false})(Header);
