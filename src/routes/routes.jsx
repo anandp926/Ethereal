@@ -69,7 +69,7 @@ const BlogsCreate = Loadable({
   loading: Loading
 })
 const BlogsEditor = Loadable({
-  loader: () => import('../pages/blogs/components/create-blog/blog-content-editor/blogs-editor'),
+  loader: () => import('../pages/blogs/components/create-blog/blog-content-editor/blog-editor'),
   loading: Loading
 })
 const Login = Loadable({
