@@ -13,6 +13,7 @@ import concrete from '../../assets/images/concrete-wireframe.svg';
 
 const navList = (props) => {
   const currentPath = window.location.pathname;
+  
   return (
     <ul className="nav-list">
       {/* <NavItem linkType={'text'} navLink={true} address={'/home'} name={'Home'} {...props}/> */}

@@ -8,7 +8,6 @@ import { NavLink } from 'react-router-dom';
 
 const navItem = (props) => {
   let item;
-  
   if (props.linkType === 'text') {
     item = props.name;
   } else if (props.linkType === 'img') {
