@@ -10,7 +10,7 @@ const pubUnpubBlog = (callback, id,data) => {
         }
     })
         .then(res => {
-         //console.log(res);
+        //console.log(res);
         callback(res)
 }).catch(err => {
         callback(err);
