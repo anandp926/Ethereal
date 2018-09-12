@@ -2,7 +2,7 @@ import  axios  from '../axios/axios';
 import headers from '../axios/headers';
 
 const getBlogItems = (callback) => {
-    axios.get(`/blogs/`, {...headers, crossdomain: true })
+    axios.get(`/blogs/`, {headers, crossdomain: true })
             .then((res) => {
                 callback(res)
             })
