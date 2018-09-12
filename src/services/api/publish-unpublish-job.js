@@ -13,8 +13,7 @@ const pubUnpubJob = (callback, id,data) => {
         'Content-Type': 'application/json'
         }
     })
-        .then(res => {
-         //console.log(res);
+        .then((res) => {
         callback(res)
 }).catch(err => {
         callback(err);
