@@ -31,11 +31,12 @@ const blogItem = (props) => {
           ?
           <ul className="display-list">
             <li>
-                <Link to={`blogs/blog/${props.id}`} >Read More</Link>
+            <Link to={`blogs/blog/${props.id}`}>Read More</Link>
+            
             </li>
-            {/* <li>
-                <a >Update</a>
-            </li> */}
+            <li>
+                <Link to={`blogs/create/content/${props.id}`}>Update</Link>
+            </li>
             <li>
               {
                   props.publish
@@ -50,7 +51,7 @@ const blogItem = (props) => {
             </li>
           </ul>
           :
-          <Link to={`blogs/blog/${props.id}`} >Read More</Link>
+          <Link to={`blogs/blog/${props.id}`}>Read More</Link>
         }
         </div>
       </div>
