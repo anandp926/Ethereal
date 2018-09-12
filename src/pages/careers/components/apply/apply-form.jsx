@@ -32,7 +32,6 @@ class ApplyForm extends Component{
         if (data.status === 201) {
             this.clearForm()
             utilityFunctions.clearSelectField('.select-input');
-            this.props.openForm()
             this.setState({
                 ...this.state,
                 errorMsg: null,
@@ -97,6 +96,7 @@ class ApplyForm extends Component{
         this.setState({
             showModal: false
         })
+        this.props.openForm()
     }
 
     render(){
