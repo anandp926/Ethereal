@@ -4,14 +4,15 @@
 import axios from 'axios';
 
 const loginInstance = axios.create({
-    baseURL: 'http://192.168.1.105:8000'
+    baseURL: 'https://api.etherealmachines.com'
 });
 
 const loginUser = (callback,data) => {
     loginInstance.post(`/auth/jwt/create/`,data,{
         headers:{
         'Content-Type': 'application/json'
-    }
+    },
+    crossdomain: true
     })
         .then((res) => {callback(res)})
     .catch(err => callback(err))
