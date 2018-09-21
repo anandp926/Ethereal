@@ -18,10 +18,6 @@ class CreateCareer extends Component{
     state = {
         position:'',
         description:'',
-        skills:'',
-        qualification:'',
-        location:'',
-        experience:'',
         publish: false,
         formValid: true,
         errorMsg: null,
@@ -36,10 +32,6 @@ class CreateCareer extends Component{
             this.setState({
                 position: filterJobs[0].position,
                 description: filterJobs[0].description,
-                skills: filterJobs[0].skills,
-                qualification: filterJobs[0].qualification,
-                location: filterJobs[0].location,
-                experience: filterJobs[0].experience,
                 publish: filterJobs[0].publish,
                 id:filterJobs[0].id
             })
@@ -114,14 +106,10 @@ class CreateCareer extends Component{
     }
     
     createJob = () => {
-        const { position, description, skills, location, qualification, experience, publish,id} = this.state
+        const { position, description, publish,id} = this.state
         const careerData = {
             position: position,
             description: description,
-            skills: skills,
-            location: location,
-            qualification: qualification,
-            experience: experience,
             publish: publish,
             id: id
         };
@@ -132,27 +120,12 @@ class CreateCareer extends Component{
         this.setState({
             position: '',
             description: '',
-            skills: '',
-            location: '',
-            qualification: '',
-            experience: '',
             publish: false,
             id:''
         })
     };
 
     render(){
-        const possiblePositions = [
-            {id: 3, value: 'Design Engineer'}, {id: 4, value: 'Product Manager'},
-            {id: 7, value: 'Embeded Engineer'}, {id: 8, value: 'Electronics Engineer'},
-            {id: 2, value: 'Frontend Developer'}, {id: 1, value: 'Backend Developer'},
-            {id: 10, value: 'Graphics Designer'}, {id: 6, value: 'Sales and Marketing'},
-            {id: 5, value: 'Internship'}, {id: 9, value: 'Others'},
-        ];
-        const experience = [
-            {id: 1, value: '<1 Year or Freshers'}, {id: 2, value: '2-3 Years'}, {id: 3, value: '>3 Years - <7 Years'},
-            {id: 4, value: '7-10 Years'}
-        ];
         return(
             <form onSubmit={this.submitJob}>
                 <FormControl>
@@ -160,84 +133,15 @@ class CreateCareer extends Component{
                         Position
                         <span className="star">*</span>
                     </label>
-                    <select
+                    <input
+                        type="text"
                         name="position"
-                        className="input-element select-input"
+                        placeholder="Enter Position"
+                        className="input-element"
                         id="position"
-                        required={true}
                         onChange={ e => this.handleInputChange(e)}
                         value={this.state.position}
-                    >
-                        <option value="" selected disabled>{"--select--"}</option>
-                        {possiblePositions.map((option) => (
-                            <option value={option.value} key={option.id}>
-                                {option.value}
-                            </option>
-                        ))}
-                    </select>
-                </FormControl>
-                <FormControl>
-                    <label htmlFor="skills">
-                        Skills
-                    </label>
-                    <input
-                        type="text"
-                        name="skills"
-                        placeholder="Enter the skills"
-                        className="input-element"
-                        id="skills"
-                        onChange={ e => this.handleInputChange(e)}
-                        value={this.state.skills}
                     />
-                </FormControl>
-                <FormControl>
-                    <label htmlFor="qualification">
-                        Qualification
-                    </label>
-                    <input
-                        type="text"
-                        name="qualification"
-                        placeholder="Enter the qualification"
-                        className="input-element"
-                        id="qualification"
-                        onChange={ e => this.handleInputChange(e)}
-                        value={this.state.qualification}
-                    />
-                </FormControl>
-                <FormControl>
-                    <label htmlFor="location">
-                        Location
-                        <span className="star">*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="location"
-                        placeholder="Enter the location"
-                        className="input-element"
-                        id="location"
-                        required={true}
-                        onChange={ e => this.handleInputChange(e)}
-                        value={this.state.location}
-                    />
-                </FormControl>
-                <FormControl>
-                    <label htmlFor="experience">
-                        Experience
-                    </label>
-                    <select
-                        name="experience"
-                        className="input-element select-input"
-                        id="experience"
-                        onChange={ e => this.handleInputChange(e)}
-                        value={this.state.experience}
-                    >
-                        <option value="" selected disabled>{"--select--"}</option>
-                        {experience.map((option) => (
-                            <option value={option.value} key={option.id}>
-                                { option.value}
-                            </option>
-                        ))}
-                    </select>
                 </FormControl>
                 <label htmlFor="description">
                     <b>Description</b>
