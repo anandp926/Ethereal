@@ -49,8 +49,13 @@ require('react-tap-event-plugin')() // react-tap-event-plugin is required by mat
 
 class BlogEditor extends Component {
 
+    state = {
+        loc: true
+    }
   
   componentWillMount(){
+
+    console.log(this.props.location)
     this.props.contentEditorOpen(true)
   }
 
@@ -59,14 +64,14 @@ class BlogEditor extends Component {
     if(data.data.id !== this.props.match.params.id){
         alert("This Blog is not found")
         this.props.contentEditorOpen(true)
-        return window.location.href='/'
+        return window.location.href='/#/blogs'
     }else if(data.status === 200){
         if(data.data.content && !this.props.blog.length>0 ){
-            alert('Please go to blog page to update content')
-            return window.location.href='/'
+            alert('Please go to blogs page to update content')
+           return window.location.href='/#/blogs'
         }else if(data.data.content && this.props.blog.length>0 && !this.props.blog[0].content){
-            alert('Please go to blog page to update content')
-            return window.location.href='/'
+            alert('Please go to blogs page to update content')
+            return window.location.href='/#/blogs'
         }
     }else {
         alert(data)
@@ -74,7 +79,6 @@ class BlogEditor extends Component {
 }
 
 componentDidMount() {
-
     const id = this.props.match.params.id
     if(id){
         getBlogItemsByID(this.callback,id)
@@ -84,7 +88,7 @@ componentDidMount() {
         var cnfrm= window.confirm("You will loss your data");
         if (cnfrm == true) {
             this.props.contentEditorOpen(false) 
-            return window.location.href='/blogs'
+            return window.location.href='/#/blogs'
         } else {
             return false
         }
@@ -98,7 +102,7 @@ componentDidMount() {
     
     if(data.status === 200){
         alert("Succesfull saved")
-        return window.location.href='/'
+        return window.location.href='/#/blogs'
     }else if (data.response) {
         alert(data)
       } else {
@@ -119,7 +123,6 @@ componentDidMount() {
  }
 
   render() {
-
     // Creates an empty editable
     let content = createEmptyState();
 
@@ -146,16 +149,18 @@ componentDidMount() {
         editables: [content],
     })
     return (
-      <div>
-        <FloatingButton onUpdate={this.updateContent}/>
-        {/* Content area */}
-        <Editable editor={editor} id={content.id} onChange={state => (this.editorState = state)}/>
+        <div className="page page--blogs-page">
+            <section className="section section--blogs">
+                <FloatingButton onUpdate={this.updateContent}/>
+                {/* Content area */}
+                <Editable editor={editor} id={content.id} onChange={state => (this.editorState = state)}/>
 
-        {/*  Default user interface  */}
-        <Trash editor={editor}/>
-        <DisplayModeToggle editor={editor}/>
-        <Toolbar editor={editor}/>
-      </div>
+                {/*  Default user interface  */}
+                <Trash editor={editor}/>
+                <DisplayModeToggle editor={editor}/>
+                <Toolbar editor={editor}/>
+            </section>
+        </div>
     );
   }
 }
