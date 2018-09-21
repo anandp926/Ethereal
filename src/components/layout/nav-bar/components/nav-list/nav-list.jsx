@@ -48,7 +48,7 @@ const navList = (props) => {
               <NavItem
                   linkType={'img'}
                   img={{
-                      url: 'https://avatars0.githubusercontent.com/u/18368796?s=460&v=4',
+                      url: 'https://us.123rf.com/450wm/nexusby/nexusby1805/nexusby180500076/100911331-stock-vector-default-avatar-photo-placeholder-profile-picture.jpg?ver=6',
                       alt: 'User',
                       width: 40,
                       height: 40
