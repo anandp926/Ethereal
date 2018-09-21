@@ -54,8 +54,6 @@ class BlogEditor extends Component {
     }
   
   componentWillMount(){
-
-    console.log(this.props.location)
     this.props.contentEditorOpen(true)
   }
 
@@ -125,12 +123,11 @@ componentDidMount() {
   render() {
     // Creates an empty editable
     let content = createEmptyState();
-
-    //console.log(this.props.blog)
     
     if(this.props.blog.length>0){
-        if(this.props.blog[0].content){
-            content = JSON.parse(this.props.blog[0].content)
+        const filterContent = this.props.blog.filter((data) => data.id === this.props.match.params.id)
+        if(filterContent[0].content){
+            content = JSON.parse(filterContent[0].content)
         }else{
             content = createEmptyState()
         }
