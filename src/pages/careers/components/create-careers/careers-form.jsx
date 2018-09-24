@@ -17,6 +17,7 @@ class CreateCareer extends Component{
     
     state = {
         position:'',
+        experience:'',
         description:'',
         publish: false,
         formValid: true,
@@ -31,6 +32,7 @@ class CreateCareer extends Component{
             const filterJobs = Object.values(jobItems)[1].filter((data) => data.id === this.props.careerId)
             this.setState({
                 position: filterJobs[0].position,
+                experience: filterJobs[0].experience,
                 description: filterJobs[0].description,
                 publish: filterJobs[0].publish,
                 id:filterJobs[0].id
@@ -106,9 +108,10 @@ class CreateCareer extends Component{
     }
     
     createJob = () => {
-        const { position, description, publish,id} = this.state
+        const { position, description,experience, publish,id} = this.state
         const careerData = {
             position: position,
+            experience: experience,
             description: description,
             publish: publish,
             id: id
@@ -120,6 +123,7 @@ class CreateCareer extends Component{
         this.setState({
             position: '',
             description: '',
+            experience:'',
             publish: false,
             id:''
         })
@@ -141,6 +145,21 @@ class CreateCareer extends Component{
                         id="position"
                         onChange={ e => this.handleInputChange(e)}
                         value={this.state.position}
+                    />
+                </FormControl>
+                <FormControl>
+                    <label htmlFor="experience">
+                        Experience
+                        <span className="star">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="experience"
+                        placeholder="Enter Experience"
+                        className="input-element"
+                        id="experience"
+                        onChange={ e => this.handleInputChange(e)}
+                        value={this.state.experience}
                     />
                 </FormControl>
                 <label htmlFor="description">
