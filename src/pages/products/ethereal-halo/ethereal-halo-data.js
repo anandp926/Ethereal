@@ -102,7 +102,7 @@ const etherealHalo = {
     {
       id: 8,
       title: 'Extrusion Mechanism',
-      description: 'Gearede Extruder'
+      description: 'Geared Extruder'
     },
     {
       id: 9,
@@ -117,7 +117,7 @@ const etherealHalo = {
     {
       id: 11,
       title: 'Extruder Temperature',
-      description: 'Upto 280 Deg Celsius'
+      description: 'Upto 285 Deg Celsius'
     },
     {
       id: 12,
