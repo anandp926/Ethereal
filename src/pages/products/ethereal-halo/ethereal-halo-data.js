@@ -72,7 +72,7 @@ const etherealHalo = {
     {
       id: 2,
       title: 'Dimensions',
-      description: '950 x 920 x 1100 mm'
+      description: '950 x 950 x 1200 mm'
     },
     {
       id: 3,
@@ -91,8 +91,8 @@ const etherealHalo = {
     },
     {
       id: 6,
-      title: 'Dedicated PC-Based Controller',
-      description: 'Real time monitoring and control of the machining in process'
+      title: 'Controller',
+      description: 'Dedicated PC-Based Controller'
     },
     {
       id: 7,
@@ -102,7 +102,7 @@ const etherealHalo = {
     {
       id: 8,
       title: 'Extrusion Mechanism',
-      description: 'Geared Direct Drive Extruder'
+      description: 'Gearede Extruder'
     },
     {
       id: 9,
@@ -117,7 +117,7 @@ const etherealHalo = {
     {
       id: 11,
       title: 'Extruder Temperature',
-      description: 'Upto 350 Deg Celsius'
+      description: 'Upto 280 Deg Celsius'
     },
     {
       id: 12,
