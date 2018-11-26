@@ -77,7 +77,7 @@ class Footer extends Component{
                   <NavLink to='/products/pentagram'>Pentagram</NavLink>
                 </li>
                 <li className="link-item">
-                  <NavLink to='/blogs/blog_1'>Concrete 3D Printer</NavLink>
+                  <NavLink to='/products/concrete'>Concrete 3D Printer</NavLink>
                 </li>
               </ul>
             </div>
