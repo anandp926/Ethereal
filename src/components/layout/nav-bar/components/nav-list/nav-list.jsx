@@ -31,7 +31,7 @@ const navList = (props) => {
             <span className="subtitle">Pentagram</span>
             <div className="caption">Desktop Simultaneous 5-axis CNC Machine</div>
           </SubListItem>
-          <SubListItem url={concrete} width={70} height={70} hasImage link={'/blogs/blog_1'} {...props}>
+          <SubListItem url={concrete} width={70} height={70} hasImage link={'/blogs'} {...props}>
             <span className="subtitle">Concrete 3D Printer</span>
             <div className="caption">Automated Concrete Laying Machine</div>
           </SubListItem>
