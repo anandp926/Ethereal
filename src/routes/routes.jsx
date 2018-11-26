@@ -36,6 +36,10 @@ const Pentagram = Loadable({
   loader: () => import('../pages/products/ethereal-pentagram/ethereal-pentagram.jsx'),
   loading: Loading
 });
+const Concrete = Loadable({
+  loader: () => import('../pages/products/ethereal-concrete/ethereal-concrete'),
+  loading: Loading
+})
 const About = Loadable({
   loader: () => import('../pages/about/about'),
   loading: Loading
@@ -124,6 +128,7 @@ class Routes extends Component {
           <Route path="/products/halo" component={Halo} />
           <Route path="/products/ray" component={Ray} />
           <Route path="/products/pentagram" component={Pentagram} />
+          <Route path="/products/concrete" component={Concrete} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/careers" exact component={Careers} />
           <Route path="/careers/apply/:id" component={Apply} />
